@@ -1,6 +1,18 @@
-# Sudoku
+# About Sudoku
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+A classic 9x9 Sudoku generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+The implementation supports the generation of a new 9x9 Sudoku, resolving the same with few additional features like, Help (to fill the first blank cell), invalid step detection, similar cell highlighting, and neighbour cell highlighting.
+
+The backtracking/recursive algorithm is used for generating and/or resolving the Sudoku.
+
+## Deploy
+
+Branch: master
+Command: ng build --prod --baseHref="https://quarnet/respository-name/sudoku/"
+
+## Demo
+
+[Sudoku](https://quarnet.github.io/sudoku/)
 
 ## Development server
 
