@@ -40,7 +40,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
   @Select(SudokuState.getFailCount)
   failCount$?: Observable<number>;
   failCountSub?: Subscription;
-  attemptLeft = 0;
+  failCount = 0;
 
   @Select(SudokuState.getIsHighlightParticipants)
   highlightParticipants$?: Observable<boolean>;
@@ -111,7 +111,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
     });
 
     this.failCountSub = this.failCount$?.subscribe((flag) => {
-      this.attemptLeft = 5 - flag;
+      this.failCount = flag;
     });
 
     this.highlightSimilarCellsSub = this.highlightSimilarCells$?.subscribe(

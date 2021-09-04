@@ -26,20 +26,22 @@
 
 <div class="row mt-2 contents">
   <div class="col">
-    <h4>
-      Help Left <span class="badge badge-secondary ml-2">{{ helpLeft }}</span>
-    </h4>
-    <h4>
-      Attempts Left
-      <span
-        class="badge ml-2"
-        [ngClass]="{
-          'badge-secondary': attemptLeft > 2,
-          'badge-danger': attemptLeft <= 2
-        }"
-        >{{ attemptLeft }}</span
-      >
-    </h4>
+    <div *ngIf="isSudokuActive">
+      <h4>
+        Mistakes
+        <span
+          class="badge ml-2"
+          [ngClass]="{
+            'badge-secondary': failCount <= 3,
+            'badge-danger': failCount > 3
+          }"
+          >{{ failCount }}/5</span
+        >
+      </h4>
+    </div>
+    <div *ngIf="!isSudokuActive">
+      <h4>Start a new Sudoku</h4>
+    </div>
   </div>
 </div>
 
@@ -64,13 +66,16 @@
     <button
       class="btn btn-primary btn-lg"
       (click)="onHelp()"
-      [disabled]="!isSudokuActive"
+      [disabled]="!isSudokuActive || helpLeft <= 0"
       [ngClass]="{
         'btn-primary': isSudokuActive,
         'btn-secondary': !isSudokuActive
       }"
     >
       Help
+      <span class="badge badge-light" *ngIf="isSudokuActive">{{
+        helpLeft
+      }}</span>
     </button>
   </div>
 </div>

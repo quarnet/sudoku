@@ -392,13 +392,17 @@ export class SudokuState {
         sudokuGrid: sudokuGrid,
       });
     } else {
+      if (value === cell.value) return;
+
       const isValid = resultGrid?.cells[cell.x][cell.y].value === value;
-      (sudokuGrid as IGrid).cells[cell.x][cell.y] = new Cell(
+      const newCell = new Cell(
         cell.x,
         cell.y,
         isValid ? CellType.USER : CellType.INVALID,
         value
       );
+
+      (sudokuGrid as IGrid).cells[cell.x][cell.y] = newCell;
 
       let newFailCount = failCount;
       let newMode: SudokuMode = sudokuMode;
@@ -428,6 +432,7 @@ export class SudokuState {
         sudokuGrid: sudokuGrid,
         failCount: newFailCount,
         sudokuMode: isFinished ? SudokuMode.FINISHED : newMode,
+        activeCell: newCell,
       });
     }
   }
