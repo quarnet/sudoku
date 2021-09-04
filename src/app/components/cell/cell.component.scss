@@ -1,0 +1,58 @@
+.cell {
+  width: 11.11%;
+  float: left;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1.5px solid #cccccc45;
+  line-height: 50px;
+  position: relative;
+  font-size: 3vh;
+  font-weight: 100;
+
+  &.active {
+    background-color: #224caa;
+  }
+
+  &.invalid {
+    background-color: #ff00008f;
+  }
+
+  &.bborder {
+    border-bottom-color: white;
+  }
+
+  &.rborder {
+    border-right-color: white;
+  }
+
+  &.fixed {
+    background-color: #6a6a6a63;
+  }
+
+  &.participant {
+    background-color: #151515;
+  }
+
+  &.similar {
+    background-color: #b8b8b8c9;
+    font-weight: 700;
+  }
+
+  &.helped {
+    background-color: #545454bd;
+    font-weight: 700;
+  }
+
+  .cell-position {
+    color: #bbbbbbfa;
+    position: absolute;
+    right: 3px;
+    bottom: -17px;
+    font-size: 10px;
+    font-weight: 100;
+  }
+}

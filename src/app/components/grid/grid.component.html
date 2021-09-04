@@ -1,0 +1,7 @@
+<div class="board">
+  <div *ngFor="let rowMetric of gridMetrics?.cells">
+    <div *ngFor="let colMetric of rowMetric">
+      <app-cell [cell]="colMetric"></app-cell>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div
+  class="cell"
+  [ngStyle]="{ 'background-color': cell?.color }"
+  (click)="cellClick()"
+  [ngClass]="{
+    active: isActive,
+    rborder: showBorderRight,
+    bborder: showBorderBottom,
+    fixed: isFixed,
+    'non-fixed': isUserCell,
+    participant: isParticipantCell,
+    similar: isSimilarCell,
+    helped: isHelped,
+    invalid: isInvalid
+  }"
+>
+  {{ cell?.value === -1 ? "&nbsp;" : cell?.value }}
+
+  <div class="cell-position" [hidden]="!showAddress">
+    {{ cell?.x + ", " + cell?.y }}
+  </div>
+</div>

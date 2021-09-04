@@ -1,0 +1,20 @@
+<div class="container-fluid pt-3">
+  <div class="row" *ngIf="error.length">
+    <div class="col-sm-12">
+      {{ error }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <div class="game-over" *ngIf="isGameOver">
+        <div class="inner">WASTED</div>
+      </div>
+      <div class="grid-container">
+        <app-grid></app-grid>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <app-controller></app-controller>
+    </div>
+  </div>
+</div>

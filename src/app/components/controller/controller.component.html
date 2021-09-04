@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col">
+    <h3>
+      Help Left <span class="badge badge-secondary ml-2">{{ helpLeft }}</span>
+    </h3>
+    <h3>
+      Attempts Left
+      <span
+        class="badge ml-2"
+        [ngClass]="{
+          'badge-secondary': attemptLeft > 2,
+          'badge-danger': attemptLeft <= 2
+        }"
+        >{{ attemptLeft }}</span
+      >
+    </h3>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <div
+      class="btn-toolbar"
+      role="toolbar"
+      aria-label="Toolbar with button groups"
+    >
+      <div class="btn-group mr-2" role="group" *ngFor="let num of numbers">
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-lg"
+          (click)="fillCell(num)"
+        >
+          {{ num === -1 ? "Del" : num }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <button class="btn btn-primary btn-lg mr-2" (click)="onNewSudoku()">
+      New Game
+    </button>
+
+    <button class="btn btn-primary btn-lg mr-2" (click)="onSolve()">
+      Solve
+    </button>
+
+    <button class="btn btn-primary btn-lg" (click)="onHelp()">Help</button>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col ml-4">
+    <div class="form-group">
+      <input
+        id="chkParticipants"
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="highlightParticipants"
+        (click)="onParticipantsClick()"
+      />
+      <label class="form-check-label" for="chkParticipants"
+        >Highlight Ranges</label
+      >
+    </div>
+    <div class="form-group">
+      <input
+        id="chkSimiar"
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="highlightSimilarCells"
+        (click)="onSimilarCellClick()"
+      />
+      <label class="form-check-label" for="chkSimiar"
+        >Highlight Similar Cells</label
+      >
+    </div>
+    <div class="form-group">
+      <input
+        id="chkShowAddress"
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="showAddress"
+        (click)="onShowAddressClick()"
+      />
+      <label class="form-check-label" for="chkShowAddress">Show Address</label>
+    </div>
+  </div>
+</div>
