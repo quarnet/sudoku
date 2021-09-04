@@ -10,10 +10,12 @@
           type="button"
           class="btn btn-lg mt-1"
           [ngClass]="{
-            'btn-outline-primary': num >= 1,
-            'btn-outline-warning': num < 1
+            'btn-outline-primary': isSudokuActive && num >= 1,
+            'btn-outline-warning': isSudokuActive && num < 1,
+            'btn-outline-secondary': !isSudokuActive
           }"
           (click)="fillCell(num)"
+          [disabled]="!isSudokuActive"
         >
           {{ num === -1 ? "X" : num }}
         </button>
@@ -47,11 +49,29 @@
       New Game
     </button>
 
-    <button class="btn btn-primary btn-lg mr-2" (click)="onSolve()">
+    <button
+      class="btn btn-lg mr-2"
+      (click)="onSolve()"
+      [disabled]="!isSudokuActive"
+      [ngClass]="{
+        'btn-primary': isSudokuActive,
+        'btn-secondary': !isSudokuActive
+      }"
+    >
       Solve
     </button>
 
-    <button class="btn btn-primary btn-lg" (click)="onHelp()">Help</button>
+    <button
+      class="btn btn-primary btn-lg"
+      (click)="onHelp()"
+      [disabled]="!isSudokuActive"
+      [ngClass]="{
+        'btn-primary': isSudokuActive,
+        'btn-secondary': !isSudokuActive
+      }"
+    >
+      Help
+    </button>
   </div>
 </div>
 

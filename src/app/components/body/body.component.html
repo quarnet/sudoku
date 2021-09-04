@@ -9,6 +9,9 @@
       <div class="game-over" *ngIf="isGameOver">
         <div class="inner">WASTED</div>
       </div>
+      <div class="game-complete" *ngIf="isGameComplete">
+        <div class="inner">Success</div>
+      </div>
       <div class="grid-container">
         <app-grid></app-grid>
       </div>

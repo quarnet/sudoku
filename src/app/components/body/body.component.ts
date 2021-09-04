@@ -19,11 +19,13 @@ export class BodyComponent implements OnInit, OnDestroy {
   @Select(SudokuState.getSudokuMode) sudokuMode$?: Observable<SudokuMode>;
   sudokuModeSub?: Subscription;
   isGameOver = false;
+  isGameComplete = false;
 
   ngOnInit(): void {
     this.errorSub = this.error$?.subscribe((err) => (this.error = err));
     this.sudokuModeSub = this.sudokuMode$?.subscribe((mode) => {
       this.isGameOver = mode === SudokuMode.OVER;
+      this.isGameComplete = mode === SudokuMode.FINISHED;
     });
   }
 

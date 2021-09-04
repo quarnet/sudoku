@@ -19,3 +19,21 @@
     position: relative;
   }
 }
+
+.game-complete {
+  position: absolute;
+  background-color: #ffffff85;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  text-align: center;
+
+  .inner {
+    color: green;
+    font-size: 4rem;
+    font-weight: 400;
+    margin: auto;
+    top: 35%;
+    position: relative;
+  }
+}

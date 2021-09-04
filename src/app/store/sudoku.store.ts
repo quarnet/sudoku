@@ -221,8 +221,6 @@ export class SudokuState {
     const similarCells: ICell[] = [];
     const activeCell = getState().activeCell as ICell;
     const isEnabled = getState().highLightSimilarCells;
-    const row = activeCell.x;
-    const col = activeCell.y;
     if (!activeCell || activeCell.value === -1 || !isEnabled) {
       patchState({
         similarCells: [],
@@ -402,14 +400,34 @@ export class SudokuState {
         value
       );
 
-      const newFailCount = !isValid ? failCount + 1 : failCount;
-      const newMode =
-        newFailCount < allowedAttempts ? sudokuMode : SudokuMode.OVER;
+      let newFailCount = failCount;
+      let newMode: SudokuMode = sudokuMode;
+      let isFinished = false;
+
+      if (isValid) {
+        let breakFlag = false;
+        for (let i = 0; i < 9; i++) {
+          for (let j = 0; j < 9; j++) {
+            if (sudokuGrid?.cells[i][j].value === -1) {
+              breakFlag = true;
+              break;
+            }
+          }
+          if (breakFlag) {
+            break;
+          }
+        }
+
+        isFinished = !breakFlag;
+      } else {
+        newMode =
+          ++newFailCount < allowedAttempts ? sudokuMode : SudokuMode.OVER;
+      }
 
       patchState({
         sudokuGrid: sudokuGrid,
         failCount: newFailCount,
-        sudokuMode: newMode,
+        sudokuMode: isFinished ? SudokuMode.FINISHED : newMode,
       });
     }
   }

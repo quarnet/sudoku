@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
+import { SudokuMode } from 'src/app/model/app-modals';
 import {
   FillCell,
   Help,
@@ -25,6 +26,11 @@ export class ControllerComponent implements OnInit, OnDestroy {
   constructor(private store: Store) {}
 
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1];
+
+  @Select(SudokuState.getSudokuMode)
+  sudokuMode$?: Observable<SudokuMode>;
+  sudokuModeSub?: Subscription;
+  isSudokuActive = false;
 
   @Select(SudokuState.getHelpLeft)
   helpLeft$?: Observable<number>;
@@ -58,7 +64,7 @@ export class ControllerComponent implements OnInit, OnDestroy {
       this.store.dispatch(new NewSudoku(cells, result));
     } else {
       this.store.dispatch(
-        new SetError('Failed to generate new Sudoku. Please try again.')
+        new SetError('Failed to generate Sudoku. Please try again.')
       );
     }
   }
@@ -117,6 +123,10 @@ export class ControllerComponent implements OnInit, OnDestroy {
     this.showAddressSub = this.showAddress$?.subscribe((flag) => {
       this.showAddress = flag;
     });
+
+    this.sudokuModeSub = this.sudokuMode$?.subscribe((mode) => {
+      this.isSudokuActive = mode === SudokuMode.ACTIVE;
+    });
   }
 
   ngOnDestroy(): void {
@@ -125,5 +135,6 @@ export class ControllerComponent implements OnInit, OnDestroy {
     this.showAddressSub?.unsubscribe();
     this.helpLeftSub?.unsubscribe();
     this.failCountSub?.unsubscribe();
+    this.sudokuModeSub?.unsubscribe();
   }
 }
