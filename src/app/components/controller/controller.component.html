@@ -1,23 +1,4 @@
-<div class="row">
-  <div class="col">
-    <h3>
-      Help Left <span class="badge badge-secondary ml-2">{{ helpLeft }}</span>
-    </h3>
-    <h3>
-      Attempts Left
-      <span
-        class="badge ml-2"
-        [ngClass]="{
-          'badge-secondary': attemptLeft > 2,
-          'badge-danger': attemptLeft <= 2
-        }"
-        >{{ attemptLeft }}</span
-      >
-    </h3>
-  </div>
-</div>
-
-<div class="row mt-2">
+<div class="row contents">
   <div class="col">
     <div
       class="btn-toolbar"
@@ -27,17 +8,40 @@
       <div class="btn-group mr-2" role="group" *ngFor="let num of numbers">
         <button
           type="button"
-          class="btn btn-outline-primary btn-lg"
+          class="btn btn-lg mt-1"
+          [ngClass]="{
+            'btn-outline-primary': num >= 1,
+            'btn-outline-warning': num < 1
+          }"
           (click)="fillCell(num)"
         >
-          {{ num === -1 ? "Del" : num }}
+          {{ num === -1 ? "X" : num }}
         </button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row mt-2">
+<div class="row mt-2 contents">
+  <div class="col">
+    <h4>
+      Help Left <span class="badge badge-secondary ml-2">{{ helpLeft }}</span>
+    </h4>
+    <h4>
+      Attempts Left
+      <span
+        class="badge ml-2"
+        [ngClass]="{
+          'badge-secondary': attemptLeft > 2,
+          'badge-danger': attemptLeft <= 2
+        }"
+        >{{ attemptLeft }}</span
+      >
+    </h4>
+  </div>
+</div>
+
+<div class="row mt-2 contents">
   <div class="col">
     <button class="btn btn-primary btn-lg mr-2" (click)="onNewSudoku()">
       New Game
@@ -51,7 +55,7 @@
   </div>
 </div>
 
-<div class="row mt-2">
+<div class="row mt-2 contents">
   <div class="col ml-4">
     <div class="form-group">
       <input

@@ -24,7 +24,7 @@ import { generateNewSudoku } from 'src/app/utils/utils';
 export class ControllerComponent implements OnInit, OnDestroy {
   constructor(private store: Store) {}
 
-  numbers = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1];
 
   @Select(SudokuState.getHelpLeft)
   helpLeft$?: Observable<number>;
