@@ -186,13 +186,14 @@ export class SudokuState {
     const participants: ICell[] = [];
     const activeCell = getState().activeCell as ICell;
     const isEnabled = getState().highlightParticipants;
-    const row = activeCell.x;
-    const col = activeCell.y;
+
     if (!activeCell || !isEnabled) {
       patchState({
         participants: [],
       });
     } else {
+      const row = activeCell.x;
+      const col = activeCell.y;
       const grid = getState().sudokuGrid as IGrid;
       for (let i = 0; i < 9; i++) {
         if (col !== i) participants.push(grid.cells[row][i]);

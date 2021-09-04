@@ -33,17 +33,17 @@
     background-color: #6a6a6a63;
   }
 
+  &.helped {
+    background-color: #545454bd;
+    font-weight: 700;
+  }
+
   &.participant {
     background-color: #151515;
   }
 
   &.similar {
     background-color: #b8b8b8c9;
-    font-weight: 700;
-  }
-
-  &.helped {
-    background-color: #545454bd;
     font-weight: 700;
   }
 

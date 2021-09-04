@@ -101,7 +101,7 @@ export const generateNewSudoku = (): [boolean, number[][], number[][]] => {
       let [value, validValueFound, validAttempt] = [0, false, 0];
 
       do {
-        value = (Math.floor(Math.random() * 10) % 8) + 1;
+        value = (Math.floor(Math.random() * 10) % 9) + 1;
         validValueFound = isValid(sudokuCells, rowPosition, colPosition, value);
       } while (
         !validValueFound &&
