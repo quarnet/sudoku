@@ -7,7 +7,7 @@ The backtracking/recursive algorithm is used for generating and/or resolving the
 
 ## Deploy
 
-Branch: master
+Branch: master <br />
 Command: ng build --prod --baseHref="https://quarnet/respository-name/sudoku/"
 
 ## Demo
