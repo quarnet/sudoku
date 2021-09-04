@@ -1,5 +1,15 @@
 <footer class="footer fixed-bottom bg-dark">
   <div class="container">
-    <div class="text-center py-1">patelaxay47@gmail.com</div>
+    <div class="col item social py-2 text-center">
+      <div
+        *ngFor="let link of links"
+        class="d-inline p-2 pr-3 pl-3 icon-container"
+        [ngClass]="link.title"
+      >
+        <a [href]="link.url" class="social-link" [ngClass]="link.title">
+          <i class="bi" [ngClass]="link.icon"></i>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
